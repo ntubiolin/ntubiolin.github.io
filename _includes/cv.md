@@ -14,7 +14,7 @@ My research is on learning interpretable representations about the physical worl
     <td>
       <span class='cvdate'>2018&nbsp;-&nbsp;2020</span>
       <strong>M.S. in Computer Science</strong>, <em>National Taiwan University</em>
-        (4.18/4.30)
+        (4.05/4.30)
       <br>
         <p style='margin-top:-1em;margin-bottom:0em' markdown='1'>
         <br> Thesis: *<a href="https://github.com/ntubiolin/xcos" target="_blank">xCos: An Explainable Cosine Metric for Face Verification Task</a>*
@@ -26,7 +26,7 @@ My research is on learning interpretable representations about the physical worl
     <td>
       <span class='cvdate'>2013&nbsp;-&nbsp;2018</span>
       <strong>B.S. in Electrical Engineering</strong>, <em>National Taiwan University</em>
-        (3.99/4.00)
+        (3.77/4.00)
       <br>
     </td>
   </tr>
