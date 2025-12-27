@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublications } from '../utils/data';
+
+const publications = getPublications();
+
+// Sort by year descending
+const sortedPublications = publications.sort((a, b) => {
+  return parseInt(b.entryTags.year) - parseInt(a.entryTags.year);
+});
+
+// Group by year
+const groupedPublications = sortedPublications.reduce((acc, pub) => {
+  const year = pub.entryTags.year;
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(pub);
+  return acc;
+}, {} as Record<string, typeof publications>);
+
+const years = Object.keys(groupedPublications).sort((a, b) => parseInt(b) - parseInt(a));
+---
+
+<BaseLayout title="Publications | YuSheng Lin">
+	<div class="max-w-4xl mx-auto">
+		<h1 class="text-4xl font-bold mb-8">Publications</h1>
+		
+		<div class="space-y-12">
+			{years.map(year => (
+				<section>
+					<h2 class="text-2xl font-bold mb-6 border-b border-slate-200 dark:border-slate-800 pb-2">{year}</h2>
+					<div class="space-y-6">
+						{groupedPublications[year].map(pub => (
+							<div class="flex flex-col sm:flex-row gap-4">
+                                {/* Placeholder for image if we had one, based on ID */}
+                                {/* <div class="w-32 h-24 bg-slate-100 dark:bg-slate-800 flex-shrink-0 rounded-lg"></div> */}
+								<div class="flex-1">
+									<h3 class="text-lg font-bold mb-1">
+										<a href={pub.entryTags.url || '#'} target="_blank" class="hover:text-blue-600 transition-colors">
+											{pub.entryTags.title}
+										</a>
+									</h3>
+									<p class="text-slate-600 dark:text-slate-400 mb-2 text-sm">{pub.entryTags.author}</p>
+									<div class="flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-500 mb-2">
+										<span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{pub.entryTags.booktitle || pub.entryTags.journal || 'Preprint'}</span>
+									</div>
+                                    {pub.entryTags.abstract && (
+                                        <details class="text-sm text-slate-600 dark:text-slate-400 cursor-pointer">
+                                            <summary class="hover:text-blue-600 transition-colors">Abstract</summary>
+                                            <p class="mt-2 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+                                                {pub.entryTags.abstract}
+                                            </p>
+                                        </details>
+                                    )}
+                                    <div class="mt-2 flex gap-3 text-sm">
+                                        {pub.entryTags.url && (
+                                            <a href={pub.entryTags.url} target="_blank" class="text-blue-600 hover:underline">Paper</a>
+                                        )}
+                                        {pub.entryTags.codeurl && (
+                                            <a href={pub.entryTags.codeurl} target="_blank" class="text-blue-600 hover:underline">Code</a>
+                                        )}
+                                        {pub.entryTags.slidesurl && (
+                                            <a href={pub.entryTags.slidesurl} target="_blank" class="text-blue-600 hover:underline">Slides</a>
+                                        )}
+                                    </div>
+								</div>
+							</div>
+						))}
+					</div>
+				</section>
+			))}
+		</div>
+	</div>
+</BaseLayout>

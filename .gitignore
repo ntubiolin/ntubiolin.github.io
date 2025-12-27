@@ -1,9 +1,5 @@
-__pycache__
-*.aux
-*.log
-*.out
-*.pdf
-*.db
-*.shelf.*
-venv
-auto
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
