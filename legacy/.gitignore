@@ -1,9 +1,0 @@
-__pycache__
-*.aux
-*.log
-*.out
-*.pdf
-*.db
-*.shelf.*
-venv
-auto
