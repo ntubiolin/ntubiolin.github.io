@@ -9,11 +9,11 @@ const { basics, education, work, research, awards, skills, certificates } = resu
   <div class="max-w-4xl mx-auto space-y-12">
     
     {/* Header Section */}
-    <header class="text-center space-y-4 border-b border-slate-200 dark:border-slate-700 pb-8">
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+    <header class="text-center space-y-4 border-b border-slate-200 dark:border-slate-700 pb-12">
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
         {basics.name}
       </h1>
-      <p class="text-xl text-slate-600 dark:text-slate-400 font-medium">
+      <p class="text-2xl text-slate-600 dark:text-slate-400 font-semibold">
         {basics.label}
       </p>
       
@@ -44,22 +44,22 @@ const { basics, education, work, research, awards, skills, certificates } = resu
     </header>
 
     {/* Work Experience */}
-    <section>
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+    <section class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-8 border-b border-slate-200 dark:border-slate-700 pb-2">
         Work Experience
       </h2>
-      <div class="space-y-8">
+      <div class="space-y-10">
         {work.map((job) => (
           <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700 last:border-0">
-            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-200 dark:bg-slate-700 border-2 border-white dark:border-slate-900"></div>
+            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900"></div>
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
-              <h3 class="text-xl font-semibold text-slate-900 dark:text-white">{job.position}</h3>
-              <span class="text-sm font-medium text-slate-500 dark:text-slate-400">{job.startDate} - {job.endDate}</span>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white">{job.position}</h3>
+              <span class="text-sm font-semibold text-blue-600 dark:text-blue-400">{job.startDate} - {job.endDate}</span>
             </div>
-            <div class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-2">
+            <div class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-3">
               {job.company} <span class="text-slate-400 mx-2">•</span> <span class="text-sm text-slate-500">{job.location}</span>
             </div>
-            <ul class="list-disc list-outside ml-4 space-y-1 text-slate-600 dark:text-slate-400">
+            <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 dark:text-slate-400">
               {job.highlights.map((highlight) => (
                 <li>{highlight}</li>
               ))}
@@ -70,19 +70,19 @@ const { basics, education, work, research, awards, skills, certificates } = resu
     </section>
 
     {/* Education */}
-    <section>
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+    <section class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-8 border-b border-slate-200 dark:border-slate-700 pb-2">
         Education
       </h2>
-      <div class="space-y-6">
+      <div class="space-y-8">
         {education.map((edu) => (
-          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start group">
             <div>
-              <h3 class="text-xl font-semibold text-slate-900 dark:text-white">{edu.institution}</h3>
-              <p class="text-lg text-slate-700 dark:text-slate-300">{edu.studyType} of {edu.area}</p>
-              <p class="text-slate-600 dark:text-slate-400 mt-1">GPA: {edu.score}</p>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">{edu.institution}</h3>
+              <p class="text-lg text-slate-700 dark:text-slate-300 font-medium">{edu.studyType} of {edu.area}</p>
+              <p class="text-slate-500 dark:text-slate-400 mt-1 font-medium">GPA: {edu.score}</p>
             </div>
-            <div class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 sm:mt-0">
+            <div class="text-sm font-bold text-blue-600 dark:text-blue-400 mt-1 sm:mt-0">
               {edu.startDate} - {edu.endDate}
             </div>
           </div>

@@ -25,7 +25,7 @@ const fullName = `${name.first} ${name.last}`;
 				/>
 			</div>
 			<div class="flex-1 text-center md:text-left">
-				<h1 class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+				<h1 class="text-4xl md:text-5xl font-bold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
 					{fullName}
 				</h1>
 				<div class="prose dark:prose-invert max-w-none mb-6 text-lg text-slate-600 dark:text-slate-300" set:html={about} />
@@ -70,7 +70,7 @@ const fullName = `${name.first} ${name.last}`;
 			</h3>
 			<div class="space-y-6">
 				{recentWork.map((job) => (
-					<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
+					<div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
 						<div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
 							<h4 class="text-lg font-semibold text-slate-900 dark:text-white">{job.position}</h4>
 							<span class="text-sm font-medium text-slate-500 dark:text-slate-400">{job.startDate} - {job.endDate}</span>
@@ -96,7 +96,7 @@ const fullName = `${name.first} ${name.last}`;
 			</h3>
 			<div class="grid md:grid-cols-2 gap-4">
 				{education.map((edu) => (
-					<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
+					<div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
 						<h4 class="text-lg font-semibold text-slate-900 dark:text-white mb-1">{edu.institution}</h4>
 						<p class="text-blue-600 dark:text-blue-400 font-medium">{edu.studyType} of {edu.area}</p>
 						<div class="flex justify-between items-center mt-2 text-sm text-slate-500 dark:text-slate-400">
