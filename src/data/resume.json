@@ -1,0 +1,220 @@
+{
+    "basics": {
+        "name": "Yu-Sheng Lin",
+        "label": "Machine Learning Engineer",
+        "email": "r07944011@csie.ntu.edu.tw",
+        "phone": "(+886)908566575",
+        "website": "https://ntubiolin.github.io/",
+        "profiles": [
+            {
+                "network": "Google Scholar",
+                "url": "https://scholar.google.com/citations?user=C5BBdwYAAAAJ"
+            }
+        ]
+    },
+    "education": [
+        {
+            "institution": "National Taiwan University (NTU)",
+            "area": "Computer Science",
+            "studyType": "Master",
+            "startDate": "2018-09",
+            "endDate": "2020-06",
+            "score": "4.05/4.3"
+        },
+        {
+            "institution": "National Taiwan University (NTU)",
+            "area": "Electrical Engineering",
+            "studyType": "Bachelors",
+            "startDate": "2013-09",
+            "endDate": "2018-06",
+            "score": "3.77/4.3"
+        }
+    ],
+    "work": [
+        {
+            "company": "Google",
+            "position": "Machine Learning Engineer (SDE III)",
+            "location": "Taipei, Taiwan",
+            "startDate": "2025-10",
+            "endDate": "Present",
+            "highlights": [
+                "on-device LLM training"
+            ]
+        },
+        {
+            "company": "MediaTek",
+            "position": "Senior Machine Learning Engineer",
+            "location": "Taipei, Taiwan",
+            "startDate": "2024-06",
+            "endDate": "2025-10",
+            "highlights": [
+                "Conducting active research on generative AI agents capable of autonomously generating hardware code (digital Verilog code-gen specification and analog SPICE code) and integrating seamlessly with electronic design automation (EDA) tools. (1 paper published in IEEE ICLAD)",
+                "Led the development of agentic AI features, including the Task Management Agent launching with MediaTek DaVinci in Q4 2024. Coordinated technical synchronization with Microsoft's AutoGen team and designed the integration mechanism for embedding AutoGen agents into the Assistant API based on nearly 50 user stories."
+            ]
+        },
+        {
+            "company": "MediaTek",
+            "position": "Machine Learning Engineer",
+            "location": "Taipei, Taiwan",
+            "startDate": "2021-10",
+            "endDate": "2024-06",
+            "highlights": [
+                "Led a collaborative project with MediaTek's thermal engineering team, resulting in the publication of \"Fast SoC Thermal Simulation with Physics-aware U-Net\" at the NeurIPS 2023 Workshop, and a related patent filing.",
+                "Contributed to an RL-based macro placement solution for advanced chip design in 2022."
+            ]
+        },
+        {
+            "company": "TSMC",
+            "position": "R&D",
+            "location": "Hsinchu, Taiwan",
+            "startDate": "2021-06",
+            "endDate": "2021-10",
+            "highlights": [
+                "Research and develop image-based deep learning models for the EDA tool which solves the optical proximity correction(OPC) task used in EUV/DUV. Develop the automatic QC pipeline for the OPC algorithm."
+            ]
+        },
+        {
+            "company": "thingnario Inc.",
+            "position": "ML Research Intern",
+            "location": "Taipei, Taiwan",
+            "startDate": "2020-03",
+            "endDate": "2020-11",
+            "highlights": [
+                "Research RNN/GNN models for the solar power forecasting."
+            ]
+        },
+        {
+            "company": "IBM",
+            "position": "Blockchain Research Intern",
+            "location": "Taipei, Taiwan",
+            "startDate": "2018-09",
+            "endDate": "2018-12",
+            "highlights": []
+        }
+    ],
+    "research": [
+        {
+            "title": "Multi-agent System for the Analog Code Generation",
+            "summary": "Proposing MenTeR, a novel multi-agent AI workflow that automates and accelerates end-to-end RF/analog circuit design by reducing trial-and-error and expanding design space exploration, laying the foundation for future AI-assisted analog design tools.",
+            "citation": "Pin-Han Chen*, Yu-Sheng Lin*, et al. \"MenTeR: A fully-automated Multi-agenT workflow for end-to-end RF/Analog Circuits Netlist Design.\" Submitted to IEEE International Conference on LLM-Aided Design (IEEE ICLAD). 2025.",
+            "links": [
+                {
+                    "label": "paper",
+                    "url": "https://arxiv.org/abs/2505.22990"
+                }
+            ]
+        },
+        {
+            "title": "Physics Informed Neural Network (PINN) for thermal simulation",
+            "summary": "Proposed a U-Net trained with Physics-Informed Neural Network (PINN) loss for System-on-Chip (SoC) thermal simulation. Incorporated the Sobel operator into the loss function to enforce adherence to the governing thermal equation (Fourier-Biot) during training.",
+            "citation": "Yu-Sheng Lin*, Li-Song Lin*, et al. \"Fast SoC thermal simulation with physics-aware U-Net.\" Workshop at the 37th conference on Neural Information Processing Systems (NeurIPS). 2023.",
+            "links": [
+                {
+                    "label": "paper",
+                    "url": "https://ml4physicalsciences.github.io/2023/files/NeurIPS_ML4PS_2023_13.pdf"
+                }
+            ]
+        },
+        {
+            "title": "Explainable AI (XAI) on Face Recognition",
+            "summary": "Proposing a novel explainable metric, called xCos, that provides spatial explanation for the face verification task.",
+            "citation": "Yu-Sheng Lin, et al. \"xCos: An Explainable Cosine Metric for Face Verification Task.\" ACM Transactions on Multimedia Computing Communications and Applications (TOMM). 2021.",
+            "links": [
+                {
+                    "label": "paper",
+                    "url": "https://arxiv.org/abs/2003.05383"
+                },
+                {
+                    "label": "ECCV 2020 Demo",
+                    "url": "https://eccv2020.eu/demonstrations/"
+                },
+                {
+                    "label": "Demo Video",
+                    "url": "https://youtu.be/lFIW_w0y08A"
+                },
+                {
+                    "label": "GitHub",
+                    "url": "https://github.com/ntubiolin/xcos"
+                }
+            ]
+        },
+        {
+            "title": "Object Detection under Extreme Low-Light Conditions with RAW Images",
+            "summary": "Proposing a high-quality large-scale Night Object Detection (NOD) dataset showing dynamic scenes captured on the streets at night. Improve generalization to unseen camera sensors by implementing a minimal neural ISP pipeline for machine cognition, named GenISP.",
+            "citation": "Igor Morawski, Yu-An Chen, Yu-Sheng Lin, et al. \"NOD: Taking a Closer Look at Detection under Extreme Low-Light Conditions with Night Object Detection Dataset.\" BMVC 2021. / \"GenISP: Neural ISP for Low-Light Machine Cognition.\" CVPRW 2022.",
+            "links": [
+                {
+                    "label": "NOD paper",
+                    "url": "https://arxiv.org/abs/2110.10364"
+                },
+                {
+                    "label": "GenISP paper",
+                    "url": "https://arxiv.org/abs/2205.03688"
+                },
+                {
+                    "label": "Dataset",
+                    "url": "https://forms.gle/YhHYBofVjphosbeDA"
+                },
+                {
+                    "label": "GitHub",
+                    "url": "https://github.com/igor-morawski/nod"
+                }
+            ]
+        },
+        {
+            "title": "Explaining the addition mechanism of GRU cell",
+            "summary": "Analyze the adding mechanism of the GRU cell given a sentence of digits and the addition operator. (Best final project award in SDML2019, NTU)",
+            "links": []
+        }
+    ],
+    "awards": [
+        {
+            "title": "President’s Awards",
+            "awarder": "NTU",
+            "date": "2014"
+        },
+        {
+            "title": "Leader of NTUSUNRISE club",
+            "awarder": "NTU",
+            "date": "2016"
+        },
+        {
+            "title": "Honorable Mention",
+            "awarder": "National Palace Museum Hackathon",
+            "date": "2017"
+        },
+        {
+            "title": "Excellent Paper Award",
+            "awarder": "The Thirteenth TSC Thesis Award",
+            "date": "2020"
+        }
+    ],
+    "skills": [
+        {
+            "name": "Programming Languages",
+            "keywords": [
+                "Python",
+                "C++",
+                "node.js",
+                "C",
+                "Java",
+                "R"
+            ]
+        },
+        {
+            "name": "Tools and Libraries",
+            "keywords": [
+                "numpy",
+                "scipy",
+                "PyTorch"
+            ]
+        }
+    ],
+    "certificates": [
+        {
+            "name": "TOEIC",
+            "score": "910",
+            "date": "2018"
+        }
+    ]
+}

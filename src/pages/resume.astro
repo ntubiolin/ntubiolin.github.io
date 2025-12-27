@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import resumeData from '../data/resume.json';
+
+const { basics, education, work, research, awards, skills, certificates } = resumeData;
+---
+
+<BaseLayout title={`Resume | ${basics.name}`} description={`Resume of ${basics.name} - ${basics.label}`}>
+  <div class="max-w-4xl mx-auto space-y-12">
+    
+    {/* Header Section */}
+    <header class="text-center space-y-4 border-b border-slate-200 dark:border-slate-700 pb-8">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+        {basics.name}
+      </h1>
+      <p class="text-xl text-slate-600 dark:text-slate-400 font-medium">
+        {basics.label}
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+        <a href={`mailto:${basics.email}`} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+            <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
+            <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
+          </svg>
+          {basics.email}
+        </a>
+        <a href={basics.website} target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.699-3.181a1 1 0 011.827 1.035l-1.74 3.258 2.253 2.253a1 1 0 11-1.414 1.414l-1.962-1.963-.293.293v.042l-1.187 1.185a3.003 3.003 0 01-4.242 0L8.293 10l-1.187-1.185a1 1 0 01-.293-.707v-.042l-1.962 1.963a1 1 0 11-1.414-1.414l2.253-2.253-1.74-3.258a1 1 0 011.827-1.035l1.699 3.181L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+          Website
+        </a>
+        {basics.profiles.map(profile => (
+          <a href={profile.url} target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+              <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" />
+              <path d="M11.603 6.08a.75.75 0 00-1.06-1.06l-2.224 2.224a2.5 2.5 0 01-3.536 3.536l1.225 1.224a.75.75 0 001.061 1.06l-1.224-1.224a4 4 0 005.656 5.656l3-3a4 4 0 00-.225-5.865.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l2.224-2.224z" />
+            </svg>
+            {profile.network}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    {/* Work Experience */}
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+        Work Experience
+      </h2>
+      <div class="space-y-8">
+        {work.map((job) => (
+          <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700 last:border-0">
+            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-200 dark:bg-slate-700 border-2 border-white dark:border-slate-900"></div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+              <h3 class="text-xl font-semibold text-slate-900 dark:text-white">{job.position}</h3>
+              <span class="text-sm font-medium text-slate-500 dark:text-slate-400">{job.startDate} - {job.endDate}</span>
+            </div>
+            <div class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-2">
+              {job.company} <span class="text-slate-400 mx-2">•</span> <span class="text-sm text-slate-500">{job.location}</span>
+            </div>
+            <ul class="list-disc list-outside ml-4 space-y-1 text-slate-600 dark:text-slate-400">
+              {job.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Education */}
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+        Education
+      </h2>
+      <div class="space-y-6">
+        {education.map((edu) => (
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+            <div>
+              <h3 class="text-xl font-semibold text-slate-900 dark:text-white">{edu.institution}</h3>
+              <p class="text-lg text-slate-700 dark:text-slate-300">{edu.studyType} of {edu.area}</p>
+              <p class="text-slate-600 dark:text-slate-400 mt-1">GPA: {edu.score}</p>
+            </div>
+            <div class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 sm:mt-0">
+              {edu.startDate} - {edu.endDate}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Research Experience */}
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+        Research Experience
+      </h2>
+      <div class="space-y-8">
+        {research.map((item) => (
+          <div class="group">
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              {item.title}
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-3 leading-relaxed">
+              {item.summary}
+            </p>
+            {item.citation && (
+              <p class="text-sm text-slate-500 dark:text-slate-500 italic mb-3">
+                {item.citation}
+              </p>
+            )}
+            {item.links && item.links.length > 0 && (
+              <div class="flex flex-wrap gap-3">
+                {item.links.map((link) => (
+                  <a 
+                    href={link.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
+                  >
+                    [{link.label}]
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Skills & Certificates */}
+    <div class="grid md:grid-cols-2 gap-12">
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+          Skills
+        </h2>
+        <div class="space-y-4">
+          {skills.map((skillGroup) => (
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">{skillGroup.name}</h3>
+              <div class="flex flex-wrap gap-2">
+                {skillGroup.keywords.map((keyword) => (
+                  <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm">
+                    {keyword}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+          Certificates & Awards
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-3">Honors & Awards</h3>
+            <ul class="space-y-2">
+              {awards.map((award) => (
+                <li class="flex justify-between items-start">
+                  <span class="text-slate-700 dark:text-slate-300">{award.title} <span class="text-slate-500 text-sm">({award.awarder})</span></span>
+                  <span class="text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap ml-4">{award.date}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div class="pt-4">
+            <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-3">Certificates</h3>
+            <ul class="space-y-2">
+              {certificates.map((cert) => (
+                <li class="flex justify-between items-start">
+                  <span class="text-slate-700 dark:text-slate-300">{cert.name} <span class="text-slate-500 text-sm">(Score: {cert.score})</span></span>
+                  <span class="text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap ml-4">{cert.date}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</BaseLayout>
