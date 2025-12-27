@@ -1,0 +1,1 @@
+- Don't commit directory `specification_documents` unless user ask for it.

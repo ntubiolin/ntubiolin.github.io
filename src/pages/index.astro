@@ -1,16 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCVData, getPublications } from '../utils/data';
+import { getCVData } from '../utils/data';
+import resumeData from '../data/resume.json';
 
 const cv = getCVData();
-const publications = getPublications();
+const { work, education } = resumeData;
 
-// Get recent publications (first 3)
-// Assuming bibtex is sorted or we sort it. 
-// The original generate.py sorted by year.
-const sortedPublications = publications.sort((a, b) => {
-  return parseInt(b.entryTags.year) - parseInt(a.entryTags.year);
-}).slice(0, 3);
+// Get recent work experience (first 3)
+const recentWork = work.slice(0, 3);
 
 const { name, about, social } = cv;
 const fullName = `${name.first} ${name.last}`;
@@ -49,9 +46,6 @@ const fullName = `${name.first} ${name.last}`;
 							LinkedIn
 						</a>
 					)}
-                    <a href={cv.pdf} target="_blank" class="px-6 py-2 rounded-full border-2 border-slate-900 dark:border-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                        CV (PDF)
-                    </a>
 				</div>
 			</div>
 		</div>
@@ -59,27 +53,59 @@ const fullName = `${name.first} ${name.last}`;
 
 	<section class="py-12 border-t border-slate-200 dark:border-slate-800">
 		<div class="flex justify-between items-center mb-8">
-			<h2 class="text-3xl font-bold">Recent Publications</h2>
-			<a href="/publications" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium">
-				View All &rarr;
+			<h2 class="text-3xl font-bold">Resume</h2>
+			<a href="/resume" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium">
+				View Full Resume &rarr;
 			</a>
 		</div>
 		
-		<div class="space-y-8">
-			{sortedPublications.map(pub => (
-				<div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
-					<h3 class="text-xl font-bold mb-2">
-						<a href={pub.entryTags.url || '#'} target="_blank" class="hover:text-blue-600 transition-colors">
-							{pub.entryTags.title}
-						</a>
-					</h3>
-					<p class="text-slate-600 dark:text-slate-400 mb-2">{pub.entryTags.author}</p>
-					<div class="flex flex-wrap gap-2 text-sm text-slate-500 dark:text-slate-500">
-						<span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{pub.entryTags.booktitle || pub.entryTags.journal || 'Preprint'}</span>
-						<span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{pub.entryTags.year}</span>
+		{/* Work Experience */}
+		<div class="mb-10">
+			<h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-blue-600">
+					<path fill-rule="evenodd" d="M6 3.75A2.75 2.75 0 018.75 1h2.5A2.75 2.75 0 0114 3.75v.443c.572.055 1.14.122 1.706.2C17.053 4.582 18 5.75 18 7.07v3.469c0 1.126-.694 2.191-1.83 2.54-1.952.599-4.024.921-6.17.921s-4.219-.322-6.17-.921C2.694 12.73 2 11.665 2 10.539V7.07c0-1.321.947-2.489 2.294-2.676A41.047 41.047 0 016 4.193V3.75zm6.5 0v.325a41.622 41.622 0 00-5 0V3.75c0-.69.56-1.25 1.25-1.25h2.5c.69 0 1.25.56 1.25 1.25zM10 10a1 1 0 00-1 1v.01a1 1 0 001 1h.01a1 1 0 001-1V11a1 1 0 00-1-1H10z" clip-rule="evenodd" />
+					<path d="M3 15.055v-.684c.126.053.255.1.39.142 2.092.642 4.313.987 6.61.987 2.297 0 4.518-.345 6.61-.987.135-.041.264-.089.39-.142v.684c0 1.347-.985 2.53-2.363 2.686a41.454 41.454 0 01-9.274 0C3.985 17.585 3 16.402 3 15.055z" />
+				</svg>
+				Work Experience
+			</h3>
+			<div class="space-y-6">
+				{recentWork.map((job) => (
+					<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
+						<div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+							<h4 class="text-lg font-semibold text-slate-900 dark:text-white">{job.position}</h4>
+							<span class="text-sm font-medium text-slate-500 dark:text-slate-400">{job.startDate} - {job.endDate}</span>
+						</div>
+						<div class="text-base font-medium text-blue-600 dark:text-blue-400 mb-2">
+							{job.company} <span class="text-slate-400 mx-2">•</span> <span class="text-sm text-slate-500">{job.location}</span>
+						</div>
+						{job.highlights.length > 0 && (
+							<p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2">{job.highlights[0]}</p>
+						)}
 					</div>
-				</div>
-			))}
+				))}
+			</div>
+		</div>
+
+		{/* Education */}
+		<div>
+			<h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-blue-600">
+					<path fill-rule="evenodd" d="M9.664 1.319a.75.75 0 01.672 0 41.059 41.059 0 018.198 5.424.75.75 0 01-.254 1.285 31.372 31.372 0 00-7.86 3.83.75.75 0 01-.84 0 31.508 31.508 0 00-2.08-1.287V9.394c0-.244.116-.463.302-.592a35.504 35.504 0 013.305-2.033.75.75 0 00-.714-1.319 37 37 0 00-3.446 2.12A2.216 2.216 0 006 9.393v.38a31.293 31.293 0 00-4.28-1.746.75.75 0 01-.254-1.285 41.059 41.059 0 018.198-5.424zM6 11.459a29.848 29.848 0 00-2.455-1.158 41.029 41.029 0 00-.39 3.114.75.75 0 00.419.74c.528.256 1.046.53 1.554.82-.21.324-.455.63-.739.914a.75.75 0 101.06 1.06c.37-.369.69-.77.96-1.193a26.61 26.61 0 013.095 2.348.75.75 0 00.992 0 26.547 26.547 0 015.93-3.95.75.75 0 00.42-.739 41.053 41.053 0 00-.39-3.114 29.925 29.925 0 00-5.199 2.801 2.25 2.25 0 01-2.514 0c-.41-.275-.826-.541-1.25-.797a6.985 6.985 0 01-1.084 3.45 26.503 26.503 0 00-1.281-.78A5.487 5.487 0 006 12v-.541z" clip-rule="evenodd" />
+				</svg>
+				Education
+			</h3>
+			<div class="grid md:grid-cols-2 gap-4">
+				{education.map((edu) => (
+					<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow">
+						<h4 class="text-lg font-semibold text-slate-900 dark:text-white mb-1">{edu.institution}</h4>
+						<p class="text-blue-600 dark:text-blue-400 font-medium">{edu.studyType} of {edu.area}</p>
+						<div class="flex justify-between items-center mt-2 text-sm text-slate-500 dark:text-slate-400">
+							<span>GPA: {edu.score}</span>
+							<span>{edu.startDate} - {edu.endDate}</span>
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	</section>
 </BaseLayout>
