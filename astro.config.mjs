@@ -4,6 +4,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ntubiolin.github.io',
+  site: 'https://bob-lin.com',
   integrations: [tailwind(), sitemap()]
 });
